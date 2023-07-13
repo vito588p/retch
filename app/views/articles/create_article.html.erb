@@ -1,0 +1,19 @@
+<form action="/articles" method="POST" data-turbo="false">
+    <div>
+        <h1>新增文章</h1>
+    </div>
+    <div>
+        <label for="">標題</label>
+        <input type="text" name="title">
+    </div>
+    <div>
+        <label for="">內文</label>
+        <textarea name="text" id="" cols="30" rows="10"></textarea>      
+    </div>
+    <div>
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    </div>
+    <div>
+        <button>submit</button>
+    </div>
+</form>
