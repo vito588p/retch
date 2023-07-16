@@ -4,11 +4,27 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   # get "/about", controller: "pages", action: "about"
-  # get "/", to: "articles#index"
+
+  # get "/", to: "articles#index", as: "root"
   root "articles#index"
-  get "/about", to: "pages#about"
-  get "/articles", to: "articles#index"
-  get "/articles/new", to: "articles#new"
-  post "/articles", to: "articles#create"
-  # get "/contact", to: "pages#contact"
+
+
+  resources :articles
+  # 8 個 route，7 個 action
+ 
+  # get "/articles", to: "articles#index"
+  # get "/articles/new", to: "articles#new"
+  # post "/articles", to: "articles#create"
+
+  # # # 單一頁面 慣例:id
+  # # # 比對型的擺在後面
+  # get "articles/:id", to: "articles#show"
+  # get "articles/:id/edit", to: "articles#edit"
+  # patch "articles/:id", to: "articles#update"
+  # put "articles/:id", to: "articles#update"
+  # delete "articles/:id", to: "articles#destroy"
+
+  
+  # get "/about", to: "pages#about"
+  #get "/contact", to: "pages#contact"
 end
