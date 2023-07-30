@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
     # rescue_from ActiveRecord::RecordNotFound, with: :not_found  #拯救整個 controller，再移去ArticlesController
-
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
     before_action :set_article, only: [:show, :edit, :update, :destroy]  #正面表述
     #before_action :set_article, except: [:index, :new, :create]         #反面表述
     
