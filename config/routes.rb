@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   # get "/", to: "articles#index", as: "root"
   root "articles#index"
 
-  resource :users, except: [:show, :destroy] #不給ＩＤ查找，不需要show 也不給刪除會員
+  resource :users, except: [:show, :destroy] do #不給ＩＤ查找，不需要show 也不給刪除會員
+    collection do
+      get :login
+      post :logining
+    end
+  end
 
   resources :articles
   # 8 個 route，7 個 action
