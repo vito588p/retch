@@ -23,10 +23,16 @@ class UsersController < ApplicationController
     )
 
     if user #存在就發session / cookie
+      session[:players] = user.id
       redirect_to root_path, notice: "登入成功！"
     else
       redirect_to login_users_path, alert: "登入失敗，請確認資料填寫正確。"
     end
+  end
+
+  def logout
+    session[:players] = nil
+    redirect_to root_path, notice "已登出!"
   end
 
   private
