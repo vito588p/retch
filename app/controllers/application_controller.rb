@@ -1,21 +1,21 @@
 class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :not_found  #拯救所有 controllers
 
-  helper_method :user_sign_in?, :current_user
+  helper_method :user_signed_in?, :current_user
 
   private
-  def user_sign_in?
+  def user_signed_in?
     session[:player].present?
   end
 
   def authenticate_user!
-    if not user_sign_in?
+    if not user_signed_in?
         redirect_to login_users_path, notice: "請先登入會員"
     end
   end
 
   def current_user
-    if user_sign_in?
+    if user_signed_in?
       @__user__ ||= user.find_by(id: session[:player])
     else
       nil
