@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
     # rescue_from ActiveRecord::RecordNotFound, with: :not_found  #拯救整個 controller，再移去ArticlesController
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-    before_action :set_article, only: [:show, :edit, :update, :destroy]  #正面表述
+    before_action :set_article, only: [:show]  #正面表述
     #before_action :set_article, except: [:index, :new, :create]         #反面表述
+    before_action :set_user_article, only: [:edit, :update, :destroy]
     
     def index
         @articles = Article.order({id: :desc})
@@ -61,8 +62,8 @@ class ArticlesController < ApplicationController
         # flash[:notice] = "文章新增成功"
         # flash[:alert] = "大失敗！"
         # redirect_to "/articles", notice: "文章新增成功", alert: "大失敗！"
-
-        @article = Article.new(article_params) 
+        
+        @article = current_user.articles.new(article_params) 
         
         if @article.save
             redirect_to root_path, notice: "文章新增成功"
@@ -105,5 +106,9 @@ class ArticlesController < ApplicationController
 
     def set_article
         @article = Article.find(params[:id])
+    end
+
+    def set_user_article
+        @article = current_user.articles.find(params[:id])
     end
 end

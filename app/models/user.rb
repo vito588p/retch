@@ -1,6 +1,11 @@
 class User < ApplicationRecord
+  # callback
   before_create :encrypt_password #Create 前加密密碼
+
+  # relationships
+  has_many :articles
   
+  #validations
   validates :name, presence: true
   # URI::MailTo::EMAIL_REGEXP 內建email 認證格式
   validates :email, presence: true, unique: true, 
@@ -9,6 +14,7 @@ class User < ApplicationRecord
                     }
   validates :password, confirmation: true
 
+  # class methods
   def self.login(email, password)
     return nil if email.empty? or password.empty?
 
