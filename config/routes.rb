@@ -16,7 +16,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :articles
+  resources :articles do
+    resources :comments, only: [:create, :destroy], shallow: true 
+  end
   # 8 個 route，7 個 action
  
   # get "/articles", to: "articles#index"
