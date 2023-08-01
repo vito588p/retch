@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     # @comment.article = @article
 
     if comment.save
-      redirect_to article_path(@article), notice: "留言成功"
+      # redirect_to article_path(@article), notice: "留言成功" #改成turbo
     else
       render "article/show"
     end

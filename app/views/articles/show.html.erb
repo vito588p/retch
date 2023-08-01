@@ -1,34 +1,27 @@
 <h1>
-    <%= @article.title %>
+  <%= @article.title %>
 </h1>
 <h2>
-    <%= @article.sub_title%>
+  <%= @article.sub_title%>
 </h2>
 
 <article>
-    <p>
-        <%= @article.content %>
-    </p>
+  <p>
+    <%= @article.content %>
+  </p>
 </article>
 
 <hr>
 <h2>留言</h2>
 
-<%= form_with(model: @comment, 
-              url: article_comments_path(@article),
-              data: { turbo: false }) do |f| %>
+<%= form_with(model: [@article, @comment]) do |f| %>
 <div>
-    <%= f.label :content, "留言內容" %><br/>
-    <%= f.text_area :content%>
+  <%= f.label :content, "留言內容" %><br/>
+  <%= f.text_area :content%>
 </div>
-    <%= f.submit "新增留言" %>
+  <%= f.submit "新增留言" %>
 <% end %>
 
-<ul>
-  <% @comments.each do |comment| %>
-    <li>
-      <%= comment.content %><br/>
-      <%= comment.create_at %>
-    </li>
-  <% end %>
+<ul id="comment_list">
+  <%= render @comments %>
 </ul>
