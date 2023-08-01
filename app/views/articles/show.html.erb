@@ -12,6 +12,7 @@
 </article>
 
 <hr>
+<h2>留言</h2>
 
 <%= form_with(model: @comment, 
               url: article_comments_path(@article),
@@ -22,3 +23,12 @@
 </div>
     <%= f.submit "新增留言" %>
 <% end %>
+
+<ul>
+  <% @comments.each do |comment| %>
+    <li>
+      <%= comment.content %><br/>
+      <%= comment.create_at %>
+    </li>
+  <% end %>
+</ul>

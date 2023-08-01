@@ -10,7 +10,9 @@ class ArticlesController < ApplicationController
     end
 
     def show
-        @Comment = Comment.new
+        @comment = Comment.new
+        @comments = article.comments.order(:id :desc)
+        
         
         #RecordNotFound Exception, 可搜尋格式不同 只能id
         #@article = Article.find(params[:id])           
