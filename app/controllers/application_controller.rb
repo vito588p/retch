@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   private
   def user_signed_in?
-    session[:player].present?
+    session[:players].present?
   end
 
   def authenticate_user!
@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     if user_signed_in?
-      @__user__ ||= user.find_by(id: session[:player])
+      @__user__ ||= User.find_by(id: session[:players])
     else
       nil
     end

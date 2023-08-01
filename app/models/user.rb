@@ -9,7 +9,7 @@ class User < ApplicationRecord
   #validations
   validates :name, presence: true
   # URI::MailTo::EMAIL_REGEXP 內建email 認證格式
-  validates :email, presence: true, unique: true, 
+  validates :email, presence: true, uniqueness: true, 
                     format: {
                       with: URI::MailTo::EMAIL_REGEXP, message: "email格式有誤"
                     }

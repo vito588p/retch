@@ -1,24 +1,24 @@
 <h1>註冊會員</h1>
 
 <div>
-  <%= form_with(model: @users, data { false }) do |f| %>
+  <%= form_with(model: @user, data: { turbo: false }) do |f| %>
     <div>
-      <%= f.label "使用者暱稱" :name %>
+      <%= f.label :name, "使用者暱稱" %>
       <%= f.text_field :name %>
     </div>
     <div>
-      <%= f.label "E-mail" :email %>
+      <%= f.label :email, "E-mail" %>
       <%= f.email_field :email %>
     </div>
     <div>
-      <%= f.label "密碼" :password %>
+      <%= f.label :password, "密碼" %>
       <%= f.password_field :password %>
     </div>
     <%# 密碼確認不需要增加欄位 %>
     <div>
-      <%= f.label "再次確認密碼" :password_confirmation %>
+      <%= f.label :password_confirmation, "再次確認密碼" %>
       <%= f.password_field :password_confirmation %>
     </div>
-    <%= f.submit %>
+    <%= f.submit "註冊帳號", class: 'action-btn' %>
   <% end %>
 </div>

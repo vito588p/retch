@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def logout
     session[:players] = nil
-    redirect_to root_path, notice "已登出!"
+    redirect_to root_path, notice: "已登出!"
   end
 
   private

@@ -5,11 +5,11 @@
               data: { turbo: false }) do |f| %>
 
 <div>
-<%= f.label "Email" :email %>
+<%= f.label :email, "Email" %>
 <%= f.email_field :email %>
 </div>
 <div>
-<%= f.label "密碼" :password %>
+<%= f.label :password, "密碼" %>
 <%= f.password_field :password %>
 </div>
 <%= f.submit "登入" %>
